@@ -67,7 +67,7 @@ const DonatePage = () => {
     <div style={{
       minHeight: 'calc(100vh - 80px)',
       padding: '3rem 2rem',
-      background: 'linear-gradient(135deg, #fff5f0 0%, #ffeee5 100%)'
+      background: 'linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%)'
     }}>
       <div style={{
         maxWidth: '800px',
