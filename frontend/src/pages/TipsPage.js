@@ -120,11 +120,23 @@ const TipsPage = () => {
             const Icon = categoryIcons[category] || Lightbulb;
             const isActive = selectedCategory === category;
             
+            const handleCategoryClick = () => {
+              if (category === 'Électricité') {
+                navigate('/tips/electricite');
+              } else if (category === 'Maison') {
+                navigate('/tips/maison');
+              } else if (category === 'Autre') {
+                navigate('/tips/autre');
+              } else {
+                setSelectedCategory(category);
+              }
+            };
+            
             return (
               <button
                 key={category}
                 data-testid={`category-${category.toLowerCase()}`}
-                onClick={() => setSelectedCategory(category)}
+                onClick={handleCategoryClick}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
