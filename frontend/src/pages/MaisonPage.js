@@ -45,6 +45,46 @@ const MaisonPage = () => {
     }
   };
   
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!title || !content) {
+      toast.error('Veuillez remplir tous les champs');
+      return;
+    }
+    
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      toast.error('Vous devez être connecté en tant qu\'administrateur');
+      return;
+    }
+    
+    setSubmitting(true);
+    
+    try {
+      await axios.post(`${API}/tips`, {
+        title,
+        content,
+        category: 'Maison'
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      toast.success('Astuce ajoutée avec succès !');
+      setTitle('');
+      setContent('');
+      setDialogOpen(false);
+      fetchTips();
+    } catch (error) {
+      console.error(error);
+      toast.error('Erreur lors de l\'ajout de l\'astuce');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+  
   if (loading) {
     return (
       <div style={{
