@@ -24,7 +24,7 @@ const Home = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(255, 250, 245, 0.90) 100%)',
+        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, rgba(44, 40, 37, 0.50) 100%)',
         zIndex: 1
       }}></div>
       
