@@ -113,7 +113,9 @@ const Home = () => {
       <section style={{
         padding: '4rem 2rem',
         maxWidth: '1400px',
-        margin: '0 auto'
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 2
       }}>
         <h2 style={{
           fontSize: 'clamp(2rem, 4vw, 3rem)',
