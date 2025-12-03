@@ -199,7 +199,7 @@ class CommunityPlatformTester:
         print("TESTING SALES API")
         print("="*50)
         
-        # Test creating sale without photos
+        # Test creating sale without photos (using form data)
         success, response = self.run_test(
             "Create Sale - No Photos",
             "POST",
@@ -210,7 +210,7 @@ class CommunityPlatformTester:
                 "description": "Test item for sale",
                 "price": "25.50"
             },
-            files=None,
+            files={},  # Empty files dict for form data
             headers={}
         )
         
