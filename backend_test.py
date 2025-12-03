@@ -123,14 +123,14 @@ class CommunityPlatformTester:
         print("TESTING DONATIONS API")
         print("="*50)
         
-        # Test creating donation without photos
+        # Test creating donation without photos (using form data)
         success, response = self.run_test(
             "Create Donation - No Photos",
             "POST",
             "donations",
             200,
             data={"phone": "0612345678"},
-            files=None,
+            files={},  # Empty files dict for form data
             headers={}
         )
         
