@@ -23,6 +23,10 @@ const AutrePage = () => {
   const navigate = useNavigate();
   const [tips, setTips] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   
   useEffect(() => {
     fetchTips();
