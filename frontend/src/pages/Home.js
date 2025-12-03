@@ -54,22 +54,22 @@ const Home = () => {
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 4rem)',
             fontWeight: '800',
-            color: '#1a1614',
+            color: '#ffffff',
             marginBottom: '1.5rem',
             lineHeight: '1.2',
-            textShadow: '2px 2px 4px rgba(255, 255, 255, 0.8)'
+            textShadow: '3px 3px 8px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.9)'
           }} data-testid="home-title">
             Partage Solidaire
           </h1>
           
           <p style={{
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: '#2c2825',
+            color: '#ffffff',
             maxWidth: '800px',
             margin: '0 auto 2rem',
             lineHeight: '1.8',
-            fontWeight: '500',
-            textShadow: '1px 1px 3px rgba(255, 255, 255, 0.9)'
+            fontWeight: '600',
+            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8)'
           }} data-testid="home-description">
             Une plateforme communautaire où générosité et solidarité se rencontrent.
             Donnez une seconde vie à vos objets, aidez ceux qui en ont besoin,
