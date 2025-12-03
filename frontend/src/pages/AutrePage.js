@@ -108,37 +108,137 @@ const AutrePage = () => {
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
-        <Button
-          onClick={() => navigate('/tips')}
-          data-testid="back-to-tips"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            marginBottom: '2rem',
-            padding: '0.8rem 1.5rem',
-            background: '#fff',
-            color: '#2c2825',
-            border: 'none',
-            borderRadius: '12px',
-            fontSize: '1rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateX(-4px)';
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateX(0)';
-            e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-          }}
-        >
-          <ArrowLeft size={20} />
-          Retour aux astuces
-        </Button>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '2rem'
+        }}>
+          <Button
+            onClick={() => navigate('/tips')}
+            data-testid="back-to-tips"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.8rem 1.5rem',
+              background: '#fff',
+              color: '#2c2825',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '1rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateX(-4px)';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateX(0)';
+              e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }}
+          >
+            <ArrowLeft size={20} />
+            Retour aux astuces
+          </Button>
+          
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                data-testid="add-tip-button"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.8rem 1.5rem',
+                  background: '#78909c',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 10px rgba(120, 144, 156, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#607d8b';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(120, 144, 156, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#78909c';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 10px rgba(120, 144, 156, 0.3)';
+                }}
+              >
+                <Plus size={20} />
+                Ajouter une astuce
+              </Button>
+            </DialogTrigger>
+            <DialogContent style={{ maxWidth: '600px' }}>
+              <DialogHeader>
+                <DialogTitle>Ajouter une astuce</DialogTitle>
+                <DialogDescription>
+                  Partagez vos conseils et astuces diverses
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} style={{ marginTop: '1.5rem' }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Label htmlFor="title" style={{ marginBottom: '0.5rem', display: 'block' }}>
+                    Titre *
+                  </Label>
+                  <Input
+                    id="title"
+                    data-testid="tip-title-input"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Ex: Astuce pratique du quotidien"
+                    required
+                  />
+                </div>
+                
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Label htmlFor="content" style={{ marginBottom: '0.5rem', display: 'block' }}>
+                    Contenu *
+                  </Label>
+                  <Textarea
+                    id="content"
+                    data-testid="tip-content-input"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Décrivez votre astuce en détail..."
+                    required
+                    rows={6}
+                  />
+                </div>
+                
+                <Button
+                  type="submit"
+                  data-testid="submit-tip-button"
+                  disabled={submitting}
+                  style={{
+                    width: '100%',
+                    padding: '0.8rem',
+                    background: '#78909c',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: submitting ? 'not-allowed' : 'pointer',
+                    opacity: submitting ? 0.7 : 1
+                  }}
+                >
+                  {submitting ? 'Ajout en cours...' : 'Ajouter l\'astuce'}
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
         
         <div style={{
           textAlign: 'center',
