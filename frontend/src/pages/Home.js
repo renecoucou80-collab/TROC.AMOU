@@ -135,13 +135,14 @@ const Home = () => {
         }}>
           <Link to="/donate" style={{ textDecoration: 'none' }} data-testid="feature-donate">
             <div style={{
-              background: '#fff',
+              background: 'rgba(255, 255, 255, 0.95)',
               padding: '2.5rem',
               borderRadius: '20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease',
               height: '100%',
-              border: '2px solid transparent'
+              border: '2px solid transparent',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-8px)';
@@ -183,13 +184,14 @@ const Home = () => {
           
           <Link to="/sell" style={{ textDecoration: 'none' }} data-testid="feature-sell">
             <div style={{
-              background: '#fff',
+              background: 'rgba(255, 255, 255, 0.95)',
               padding: '2.5rem',
               borderRadius: '20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease',
               height: '100%',
-              border: '2px solid transparent'
+              border: '2px solid transparent',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-8px)';
@@ -231,13 +233,14 @@ const Home = () => {
           
           <Link to="/listings" style={{ textDecoration: 'none' }} data-testid="feature-listings">
             <div style={{
-              background: '#fff',
+              background: 'rgba(255, 255, 255, 0.95)',
               padding: '2.5rem',
               borderRadius: '20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease',
               height: '100%',
-              border: '2px solid transparent'
+              border: '2px solid transparent',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-8px)';
@@ -279,13 +282,14 @@ const Home = () => {
           
           <Link to="/tips" style={{ textDecoration: 'none' }} data-testid="feature-tips">
             <div style={{
-              background: '#fff',
+              background: 'rgba(255, 255, 255, 0.95)',
               padding: '2.5rem',
               borderRadius: '20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease',
               height: '100%',
-              border: '2px solid transparent'
+              border: '2px solid transparent',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-8px)';
