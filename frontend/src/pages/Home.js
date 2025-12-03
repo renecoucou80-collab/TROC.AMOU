@@ -13,8 +13,13 @@ const Home = () => {
       {/* Hero Section */}
       <section style={{
         padding: '4rem 2rem',
-        background: 'linear-gradient(135deg, #fff5f0 0%, #ffeee5 100%)',
-        borderBottom: '1px solid rgba(217, 119, 87, 0.2)'
+        background: 'linear-gradient(135deg, rgba(255, 245, 240, 0.95) 0%, rgba(255, 238, 229, 0.95) 100%)',
+        borderBottom: '1px solid rgba(217, 119, 87, 0.2)',
+        backgroundImage: 'url(https://images.unsplash.com/photo-1637848982574-87b2970e24ad?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxwZW9wbGUlMjBicm93c2luZyUyMGZsZWElMjBtYXJrZXQlMjB2aW50YWdlJTIwaXRlbXN8ZW58MHx8fHwxNzY0NzY0ODk0fDA&ixlib=rb-4.1.0&q=85)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'overlay',
+        position: 'relative'
       }}>
         <div style={{
           maxWidth: '1200px',
