@@ -121,9 +121,9 @@ const Home = () => {
           fontSize: 'clamp(2rem, 4vw, 3rem)',
           textAlign: 'center',
           marginBottom: '3rem',
-          color: '#1a1614',
+          color: '#ffffff',
           fontWeight: '800',
-          textShadow: '2px 2px 4px rgba(255, 255, 255, 0.8)'
+          textShadow: '3px 3px 8px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.9)'
         }}>
           Comment ça marche ?
         </h2>
