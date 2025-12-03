@@ -7,6 +7,9 @@ import SalePage from './pages/SalePage';
 import ListingsPage from './pages/ListingsPage';
 import TipsPage from './pages/TipsPage';
 import AdminLogin from './pages/AdminLogin';
+import ElectricitePage from './pages/ElectricitePage';
+import MaisonPage from './pages/MaisonPage';
+import AutrePage from './pages/AutrePage';
 import Navigation from './components/Navigation';
 import './App.css';
 
