@@ -229,7 +229,7 @@ const DonatePage = () => {
             style={{
               width: '100%',
               padding: '1rem',
-              background: '#d97757',
+              background: '#42a5f5',
               color: '#fff',
               fontSize: '1.1rem',
               fontWeight: '600',
@@ -241,14 +241,14 @@ const DonatePage = () => {
             }}
             onMouseEnter={(e) => {
               if (!loading) {
-                e.currentTarget.style.background = '#c86647';
+                e.currentTarget.style.background = '#1e88e5';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.4)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(66, 165, 245, 0.4)';
               }
             }}
             onMouseLeave={(e) => {
               if (!loading) {
-                e.currentTarget.style.background = '#d97757';
+                e.currentTarget.style.background = '#42a5f5';
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }
