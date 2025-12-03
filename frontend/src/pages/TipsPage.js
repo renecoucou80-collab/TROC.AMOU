@@ -26,6 +26,7 @@ const categoryColors = {
 };
 
 const TipsPage = () => {
+  const navigate = useNavigate();
   const [tips, setTips] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('Tous');
