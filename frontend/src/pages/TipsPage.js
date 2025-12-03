@@ -8,19 +8,13 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const categoryIcons = {
-  'Plomberie': Droplet,
   'Électricité': Zap,
-  'Jardinage': Leaf,
-  'Bricolage': Wrench,
   'Maison': HomeIcon,
   'Autre': Lightbulb
 };
 
 const categoryColors = {
-  'Plomberie': '#42a5f5',
   'Électricité': '#fbc02d',
-  'Jardinage': '#66bb6a',
-  'Bricolage': '#ff7043',
   'Maison': '#ab47bc',
   'Autre': '#78909c'
 };
