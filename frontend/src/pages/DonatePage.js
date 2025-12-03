@@ -81,12 +81,12 @@ const DonatePage = () => {
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'rgba(217, 119, 87, 0.15)',
+            background: 'rgba(66, 165, 245, 0.2)',
             padding: '2rem',
             borderRadius: '50%',
             marginBottom: '1.5rem'
           }}>
-            <Heart size={60} stroke="#d97757" strokeWidth={1.5} />
+            <Heart size={60} stroke="#42a5f5" strokeWidth={1.5} />
           </div>
           
           <h1 style={{
