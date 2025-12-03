@@ -158,24 +158,24 @@ const DonatePage = () => {
             </Label>
             
             <div style={{
-              border: '2px dashed #d97757',
+              border: '2px dashed #42a5f5',
               borderRadius: '12px',
               padding: '2rem',
               textAlign: 'center',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
-              background: 'rgba(217, 119, 87, 0.05)'
+              background: 'rgba(66, 165, 245, 0.08)'
             }}
             onClick={() => document.getElementById('file-input').click()}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(217, 119, 87, 0.1)';
-              e.currentTarget.style.borderColor = '#c86647';
+              e.currentTarget.style.background = 'rgba(66, 165, 245, 0.15)';
+              e.currentTarget.style.borderColor = '#1e88e5';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(217, 119, 87, 0.05)';
-              e.currentTarget.style.borderColor = '#d97757';
+              e.currentTarget.style.background = 'rgba(66, 165, 245, 0.08)';
+              e.currentTarget.style.borderColor = '#42a5f5';
             }}>
-              <Upload size={40} stroke="#d97757" style={{ margin: '0 auto 1rem' }} />
+              <Upload size={40} stroke="#42a5f5" style={{ margin: '0 auto 1rem' }} />
               <p style={{ color: '#5a5550', fontSize: '1rem' }}>
                 Cliquez pour sélectionner des photos
               </p>
