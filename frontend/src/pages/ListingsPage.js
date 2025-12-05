@@ -190,37 +190,35 @@ const ListingsPage = () => {
                       Posté le {new Date(donation.created_at).toLocaleDateString('fr-FR')}
                     </p>
                     
-                    {isAdmin && (
-                      <Button
-                        onClick={() => setDeleteDialog({ open: true, type: 'donation', id: donation.id })}
-                        data-testid={`delete-donation-${donation.id}`}
-                        style={{
-                            width: '100%',
-                            padding: '0.6rem',
-                            background: '#ef5350',
-                            color: '#fff',
-                            borderRadius: '8px',
-                            border: 'none',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '0.5rem',
-                            fontSize: '0.95rem',
-                            fontWeight: '600',
-                            transition: 'all 0.3s ease'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#e53935';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.background = '#ef5350';
-                          }}
-                        >
-                          <Trash2 size={16} />
-                          Supprimer
-                        </Button>
-                    )}
+                    <Button
+                      onClick={() => setDeleteDialog({ open: true, type: 'donation', id: donation.id })}
+                      data-testid={`delete-donation-${donation.id}`}
+                      style={{
+                          width: '100%',
+                          padding: '0.6rem',
+                          background: '#ef5350',
+                          color: '#fff',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '0.5rem',
+                          fontSize: '0.95rem',
+                          fontWeight: '600',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#e53935';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = '#ef5350';
+                        }}
+                      >
+                        <Trash2 size={16} />
+                        Supprimer
+                      </Button>
                   </div>
                 </div>
               ))}
