@@ -26,6 +26,8 @@ const ListingsPage = () => {
   
   useEffect(() => {
     fetchListings();
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
   }, []);
   
   const fetchListings = async () => {
