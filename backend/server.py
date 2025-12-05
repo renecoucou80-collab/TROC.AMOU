@@ -145,7 +145,7 @@ async def get_donations():
     return donations
 
 @api_router.delete("/donations/{donation_id}")
-async def delete_donation(donation_id: str, _: str = Depends(get_current_admin)):
+async def delete_donation(donation_id: str):
     result = await db.donations.delete_one({"id": donation_id})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Donation not found")
