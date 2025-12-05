@@ -45,19 +45,9 @@ const ListingsPage = () => {
   };
   
   const handleDelete = async () => {
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      toast.error('Vous devez être connecté en tant qu\'administrateur');
-      return;
-    }
-    
     try {
       const endpoint = deleteDialog.type === 'donation' ? 'donations' : 'sales';
-      await axios.delete(`${API}/${endpoint}/${deleteDialog.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      await axios.delete(`${API}/${endpoint}/${deleteDialog.id}`);
       
       toast.success('Supprimé avec succès');
       setDeleteDialog({ open: false, type: '', id: '' });
