@@ -22,12 +22,9 @@ const ListingsPage = () => {
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteDialog, setDeleteDialog] = useState({ open: false, type: '', id: '' });
-  const [isAdmin, setIsAdmin] = useState(false);
   
   useEffect(() => {
     fetchListings();
-    const token = localStorage.getItem('adminToken');
-    setIsAdmin(!!token);
   }, []);
   
   const fetchListings = async () => {
