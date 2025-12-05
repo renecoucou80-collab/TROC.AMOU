@@ -190,11 +190,10 @@ const ListingsPage = () => {
                       Posté le {new Date(donation.created_at).toLocaleDateString('fr-FR')}
                     </p>
                     
-                    {isAdmin && (
-                      <Button
-                        onClick={() => setDeleteDialog({ open: true, type: 'donation', id: donation.id })}
-                        data-testid={`delete-donation-${donation.id}`}
-                        style={{
+                    <Button
+                      onClick={() => setDeleteDialog({ open: true, type: 'donation', id: donation.id })}
+                      data-testid={`delete-donation-${donation.id}`}
+                      style={{
                           width: '100%',
                           padding: '0.6rem',
                           background: '#ef5350',
