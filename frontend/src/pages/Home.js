@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div style={{ 
       minHeight: 'calc(100vh - 80px)',
-      backgroundImage: 'url(https://images.unsplash.com/photo-1637848982574-87b2970e24ad?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxwZW9wbGUlMjBicm93c2luZyUyMGZsZWElMjBtYXJrZXQlMjB2aW50YWdlJTIwaXRlbXN8ZW58MHx8fHwxNzY0NzY0ODk0fDA&ixlib=rb-4.1.0&q=85)',
+      backgroundImage: 'url(https://customer-assets.emergentagent.com/job_5f5835cf-60fa-41a6-a1b3-cbe520928f5e/artifacts/t0t8m0zj_village%20amou.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
