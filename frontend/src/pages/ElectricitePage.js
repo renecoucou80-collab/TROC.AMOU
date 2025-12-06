@@ -27,6 +27,8 @@ const ElectricitePage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState({ open: false, id: '' });
   
   useEffect(() => {
     fetchTips();
