@@ -217,8 +217,6 @@ async def delete_tip(tip_id: str, _: str = Depends(get_current_admin)):
 app.include_router(api_router)
 
 # Mount static files for uploads under /api/uploads
-from fastapi.responses import FileResponse
-
 @app.get("/api/uploads/{filename}")
 async def get_upload(filename: str):
     file_path = UPLOADS_DIR / filename
