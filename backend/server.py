@@ -125,7 +125,7 @@ async def create_donation(phone: str = Form(...), files: List[UploadFile] = File
                 file_path = UPLOADS_DIR / file_name
                 with open(file_path, "wb") as buffer:
                     shutil.copyfileobj(file.file, buffer)
-                photo_paths.append(f"/uploads/{file_name}")
+                photo_paths.append(f"/api/uploads/{file_name}")
     
     donation = Donation(phone=phone, photos=photo_paths)
     doc = donation.model_dump()
@@ -167,7 +167,7 @@ async def create_sale(
                 file_path = UPLOADS_DIR / file_name
                 with open(file_path, "wb") as buffer:
                     shutil.copyfileobj(file.file, buffer)
-                photo_paths.append(f"/uploads/{file_name}")
+                photo_paths.append(f"/api/uploads/{file_name}")
     
     sale = Sale(phone=phone, description=description, price=price, photos=photo_paths)
     doc = sale.model_dump()
