@@ -99,6 +99,29 @@ const ElectricitePage = () => {
     }
   };
   
+  const handleDeleteTip = async () => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      toast.error('Vous devez être connecté en tant qu\'administrateur');
+      return;
+    }
+    
+    try {
+      await axios.delete(`${API}/tips/${deleteDialog.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      toast.success('Astuce supprimée avec succès');
+      setDeleteDialog({ open: false, id: '' });
+      fetchTips();
+    } catch (error) {
+      console.error(error);
+      toast.error('Erreur lors de la suppression');
+    }
+  };
+  
   if (loading) {
     return (
       <div style={{
