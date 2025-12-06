@@ -37,9 +37,13 @@ const AutrePage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState({ open: false, id: '' });
   
   useEffect(() => {
     fetchTips();
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
   }, []);
   
   const fetchTips = async () => {
