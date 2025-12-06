@@ -42,6 +42,8 @@ const MaisonPage = () => {
   
   useEffect(() => {
     fetchTips();
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
   }, []);
   
   const fetchTips = async () => {
