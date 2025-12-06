@@ -216,6 +216,16 @@ async def delete_tip(tip_id: str, _: str = Depends(get_current_admin)):
 # Include the router in the main app
 app.include_router(api_router)
 
+# Mount static files for uploads under /api/uploads
+from fastapi.responses import FileResponse
+
+@app.get("/api/uploads/{filename}")
+async def get_upload(filename: str):
+    file_path = UPLOADS_DIR / filename
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(file_path)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
