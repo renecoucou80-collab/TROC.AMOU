@@ -213,16 +213,16 @@ async def delete_tip(tip_id: str, _: str = Depends(get_current_admin)):
         raise HTTPException(status_code=404, detail="Tip not found")
     return {"message": "Tip deleted successfully"}
 
-# Include the router in the main app
-app.include_router(api_router)
-
-# Mount static files for uploads under /api/uploads
-@app.get("/api/uploads/{filename}")
+# Route pour servir les fichiers uploadés
+@api_router.get("/uploads/{filename}")
 async def get_upload(filename: str):
     file_path = UPLOADS_DIR / filename
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(file_path)
+
+# Include the router in the main app
+app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
