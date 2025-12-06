@@ -333,7 +333,8 @@ const MaisonPage = () => {
                   padding: '2rem',
                   boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                   transition: 'all 0.3s ease',
-                  borderLeft: '6px solid #ab47bc'
+                  borderLeft: '6px solid #ab47bc',
+                  position: 'relative'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -344,6 +345,38 @@ const MaisonPage = () => {
                   e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
                 }}
               >
+                {isAdmin && (
+                  <button
+                    onClick={() => setDeleteDialog({ open: true, id: tip.id })}
+                    data-testid={`delete-tip-${tip.id}`}
+                    style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      background: '#ef5350',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.5rem',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(239, 83, 80, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#e53935';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#ef5350';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                )}
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
