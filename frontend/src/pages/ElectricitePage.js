@@ -32,6 +32,8 @@ const ElectricitePage = () => {
   
   useEffect(() => {
     fetchTips();
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
   }, []);
   
   const fetchTips = async () => {
