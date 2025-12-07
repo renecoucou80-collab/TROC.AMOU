@@ -154,6 +154,7 @@ async def delete_donation(donation_id: str):
 @api_router.post("/sales")
 async def create_sale(
     phone: str = Form(...),
+    postal_code: str = Form(...),
     description: str = Form(...),
     price: float = Form(...),
     files: List[UploadFile] = File(None)
@@ -172,7 +173,7 @@ async def create_sale(
                     shutil.copyfileobj(file.file, buffer)
                 photo_paths.append(f"/api/uploads/{file_name}")
     
-    sale = Sale(phone=phone, description=description, price=price, photos=photo_paths)
+    sale = Sale(phone=phone, postal_code=postal_code, description=description, price=price, photos=photo_paths)
     doc = sale.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.sales.insert_one(doc)
