@@ -147,6 +147,37 @@ const DonatePage = () => {
           </div>
           
           <div style={{ marginBottom: '2rem' }}>
+            <Label htmlFor="postalCode" style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginBottom: '0.75rem',
+              fontSize: '1rem',
+              fontWeight: '600',
+              color: '#2c2825'
+            }}>
+              📍 Code postal *
+            </Label>
+            <Input
+              id="postalCode"
+              data-testid="postal-code-input"
+              type="text"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              placeholder="40700"
+              required
+              maxLength={5}
+              style={{
+                padding: '1rem',
+                fontSize: '1rem',
+                borderRadius: '12px',
+                border: '2px solid #e0e0e0',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          </div>
+          
+          <div style={{ marginBottom: '2rem' }}>
             <Label htmlFor="photos" style={{
               display: 'flex',
               alignItems: 'center',
