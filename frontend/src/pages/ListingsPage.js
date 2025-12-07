@@ -331,12 +331,14 @@ const ListingsPage = () => {
                 <div
                   key={sale.id}
                   data-testid={`sale-${sale.id}`}
+                  onClick={() => navigate(`/listings/sale/${sale.id}`)}
                   style={{
                     background: '#fff',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)';
