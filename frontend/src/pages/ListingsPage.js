@@ -260,7 +260,10 @@ const ListingsPage = () => {
                     </p>
                     
                     <Button
-                      onClick={() => setDeleteDialog({ open: true, type: 'donation', id: donation.id })}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteDialog({ open: true, type: 'donation', id: donation.id });
+                      }}
                       data-testid={`delete-donation-${donation.id}`}
                       style={{
                           width: '100%',
