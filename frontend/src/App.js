@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import DonatePage from './pages/DonatePage';
 import SalePage from './pages/SalePage';
 import ListingsPage from './pages/ListingsPage';
+import DonationDetail from './pages/DonationDetail';
+import SaleDetail from './pages/SaleDetail';
 import TipsPage from './pages/TipsPage';
 import AdminLogin from './pages/AdminLogin';
 import ElectricitePage from './pages/ElectricitePage';
