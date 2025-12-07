@@ -61,7 +61,7 @@ class Sale(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     phone: str
-    postal_code: str
+    postal_code: Optional[str] = None
     description: str
     price: float
     photos: List[str] = []
