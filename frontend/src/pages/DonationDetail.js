@@ -207,11 +207,32 @@ const DonationDetail = () => {
                   </div>
                   
                   {donation.postal_code && (
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem'
-                    }}>
+                    <a
+                      href={`https://www.google.com/maps/search/${donation.postal_code}+France`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        textDecoration: 'none',
+                        padding: '0.75rem 1.25rem',
+                        background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
+                        borderRadius: '12px',
+                        border: '2px solid #42a5f5',
+                        transition: 'all 0.3s ease',
+                        cursor: 'pointer',
+                        width: 'fit-content'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(66, 165, 245, 0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
                       <span style={{ fontSize: '1.5rem' }}>📍</span>
                       <span style={{
                         color: '#2c2825',
@@ -220,7 +241,15 @@ const DonationDetail = () => {
                       }}>
                         {donation.postal_code}
                       </span>
-                    </div>
+                      <span style={{
+                        fontSize: '0.9rem',
+                        color: '#42a5f5',
+                        fontWeight: '600',
+                        marginLeft: '0.5rem'
+                      }}>
+                        🗺️ Voir sur la carte
+                      </span>
+                    </a>
                   )}
                   
                   <p style={{
