@@ -179,22 +179,32 @@ const ListingsPage = () => {
                   {donation.photos && donation.photos.length > 0 && (
                     <div style={{
                       width: '100%',
-                      paddingBottom: '75%',
-                      position: 'relative',
-                      background: '#f5f5f5'
+                      background: '#f5f5f5',
+                      display: 'grid',
+                      gridTemplateColumns: donation.photos.length === 1 ? '1fr' : donation.photos.length === 2 ? '1fr 1fr' : '2fr 1fr 1fr',
+                      gap: '4px',
+                      aspectRatio: '4/3'
                     }}>
-                      <img
-                        src={`${BACKEND_URL}${donation.photos[0]}`}
-                        alt="Don"
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
-                      />
+                      {donation.photos.map((photo, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            position: 'relative',
+                            overflow: 'hidden',
+                            gridRow: idx === 0 && donation.photos.length > 2 ? 'span 2' : 'auto'
+                          }}
+                        >
+                          <img
+                            src={`${BACKEND_URL}${photo}`}
+                            alt={`Don photo ${idx + 1}`}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover'
+                            }}
+                          />
+                        </div>
+                      ))}
                     </div>
                   )}
                   
