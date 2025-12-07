@@ -12,6 +12,7 @@ const API = `${BACKEND_URL}/api`;
 
 const SalePage = () => {
   const [phone, setPhone] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [files, setFiles] = useState([]);
