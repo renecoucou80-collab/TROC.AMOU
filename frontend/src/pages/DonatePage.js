@@ -11,6 +11,7 @@ const API = `${BACKEND_URL}/api`;
 
 const DonatePage = () => {
   const [phone, setPhone] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const [files, setFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [loading, setLoading] = useState(false);
