@@ -19,6 +19,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const ListingsPage = () => {
+  const navigate = useNavigate();
   const [donations, setDonations] = useState([]);
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
