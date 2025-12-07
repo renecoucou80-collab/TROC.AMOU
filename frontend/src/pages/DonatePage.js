@@ -210,8 +210,11 @@ const DonatePage = () => {
               e.currentTarget.style.borderColor = '#42a5f5';
             }}>
               <Upload size={40} stroke="#42a5f5" style={{ margin: '0 auto 1rem' }} />
-              <p style={{ color: '#5a5550', fontSize: '1rem' }}>
+              <p style={{ color: '#5a5550', fontSize: '1rem', marginBottom: '0.5rem' }}>
                 Cliquez pour sélectionner des photos
+              </p>
+              <p style={{ color: '#8a8580', fontSize: '0.85rem', fontWeight: '600' }}>
+                💡 Astuce : Maintenez Ctrl (ou Cmd sur Mac) pour sélectionner plusieurs photos
               </p>
               <input
                 id="file-input"
