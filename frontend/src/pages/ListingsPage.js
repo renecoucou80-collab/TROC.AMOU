@@ -84,11 +84,48 @@ const ListingsPage = () => {
         <h1 style={{
           fontSize: 'clamp(2rem, 4vw, 3rem)',
           textAlign: 'center',
-          marginBottom: '3rem',
+          marginBottom: '2rem',
           color: '#2c2825'
         }} data-testid="listings-title">
           Toutes les annonces
         </h1>
+        
+        <div style={{
+          background: 'linear-gradient(135deg, #fff9c4 0%, #fff59d 100%)',
+          border: '2px solid #fbc02d',
+          borderRadius: '16px',
+          padding: '1.5rem 2rem',
+          marginBottom: '3rem',
+          boxShadow: '0 4px 15px rgba(251, 192, 45, 0.2)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem'
+        }}>
+          <div style={{
+            background: '#fbc02d',
+            borderRadius: '50%',
+            padding: '0.8rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0
+          }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <p style={{
+            fontSize: '1.05rem',
+            color: '#5a5550',
+            margin: 0,
+            lineHeight: '1.6',
+            fontWeight: '500'
+          }}>
+            <strong>Important :</strong> Si votre objet a été donné ou vendu, merci de <strong>supprimer votre annonce</strong> en cliquant sur le bouton "Supprimer" pour maintenir la liste à jour.
+          </p>
+        </div>
         
         {/* Donations Section */}
         <section style={{ marginBottom: '4rem' }}>
