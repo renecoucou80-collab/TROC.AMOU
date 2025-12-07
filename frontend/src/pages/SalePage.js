@@ -35,7 +35,7 @@ const SalePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!phone || !description || !price) {
+    if (!phone || !postalCode || !description || !price) {
       toast.error('Veuillez remplir tous les champs obligatoires');
       return;
     }
@@ -45,6 +45,7 @@ const SalePage = () => {
     try {
       const formData = new FormData();
       formData.append('phone', phone);
+      formData.append('postal_code', postalCode);
       formData.append('description', description);
       formData.append('price', parseFloat(price));
       files.forEach(file => {
@@ -59,6 +60,7 @@ const SalePage = () => {
       
       toast.success('Annonce ajoutée avec succès !');
       setPhone('');
+      setPostalCode('');
       setDescription('');
       setPrice('');
       setFiles([]);
