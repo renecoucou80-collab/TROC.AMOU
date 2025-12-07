@@ -203,7 +203,7 @@ const ListingsPage = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.5rem',
-                      marginBottom: '1rem'
+                      marginBottom: '0.75rem'
                     }}>
                       <Phone size={18} stroke="#5a5550" />
                       <a
@@ -218,6 +218,24 @@ const ListingsPage = () => {
                         {donation.phone}
                       </a>
                     </div>
+                    
+                    {donation.postal_code && (
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        marginBottom: '0.75rem'
+                      }}>
+                        <span style={{ fontSize: '1.1rem' }}>📍</span>
+                        <span style={{
+                          color: '#5a5550',
+                          fontSize: '1rem',
+                          fontWeight: '600'
+                        }}>
+                          {donation.postal_code}
+                        </span>
+                      </div>
+                    )}
                     
                     <p style={{
                       color: '#8a8580',
