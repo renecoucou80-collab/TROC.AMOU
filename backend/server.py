@@ -115,7 +115,7 @@ async def admin_login(credentials: AdminLogin):
     return {"access_token": access_token, "token_type": "bearer"}
 
 @api_router.post("/donations")
-async def create_donation(phone: str = Form(...), files: List[UploadFile] = File(None)):
+async def create_donation(phone: str = Form(...), postal_code: str = Form(...), files: List[UploadFile] = File(None)):
     if len(files or []) > 3:
         raise HTTPException(status_code=400, detail="Maximum 3 photos allowed")
     
@@ -130,7 +130,7 @@ async def create_donation(phone: str = Form(...), files: List[UploadFile] = File
                     shutil.copyfileobj(file.file, buffer)
                 photo_paths.append(f"/api/uploads/{file_name}")
     
-    donation = Donation(phone=phone, photos=photo_paths)
+    donation = Donation(phone=phone, postal_code=postal_code, photos=photo_paths)
     doc = donation.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.donations.insert_one(doc)
