@@ -25,6 +25,8 @@ function App() {
           <Route path="/donate" element={<DonatePage />} />
           <Route path="/sell" element={<SalePage />} />
           <Route path="/listings" element={<ListingsPage />} />
+          <Route path="/listings/donation/:id" element={<DonationDetail />} />
+          <Route path="/listings/sale/:id" element={<SaleDetail />} />
           <Route path="/tips" element={<TipsPage />} />
           <Route path="/tips/electricite" element={<ElectricitePage />} />
           <Route path="/tips/maison" element={<MaisonPage />} />
