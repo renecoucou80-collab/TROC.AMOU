@@ -32,8 +32,8 @@ const DonatePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!phone) {
-      toast.error('Veuillez entrer votre numéro de téléphone');
+    if (!phone || !postalCode) {
+      toast.error('Veuillez remplir tous les champs obligatoires');
       return;
     }
     
@@ -42,6 +42,7 @@ const DonatePage = () => {
     try {
       const formData = new FormData();
       formData.append('phone', phone);
+      formData.append('postal_code', postalCode);
       files.forEach(file => {
         formData.append('files', file);
       });
@@ -54,6 +55,7 @@ const DonatePage = () => {
       
       toast.success('Don ajouté avec succès !');
       setPhone('');
+      setPostalCode('');
       setFiles([]);
       setPreviews([]);
     } catch (error) {
