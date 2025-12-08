@@ -4,10 +4,6 @@ import { Heart, ShoppingBag, List, Lightbulb, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Home = () => {
-  const handleContact = () => {
-    window.location.href = 'mailto:rs2409@laposte.net?subject=Problème avec le site Partage Solidaire';
-  };
-  
   return (
     <div style={{ 
       minHeight: 'calc(100vh - 80px)',
