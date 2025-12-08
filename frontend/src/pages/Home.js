@@ -83,8 +83,8 @@ const Home = () => {
             flexWrap: 'wrap',
             justifyContent: 'center'
           }}>
-            <Button
-              onClick={handleContact}
+            <a
+              href="mailto:rs2409@laposte.net?subject=Problème avec le site Partage Solidaire"
               data-testid="contact-button"
               style={{
                 background: '#d97757',
@@ -99,7 +99,8 @@ const Home = () => {
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.3)'
+                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.3)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
@@ -112,7 +113,7 @@ const Home = () => {
             >
               <Mail size={20} />
               Un problème ? Contactez-moi
-            </Button>
+            </a>
             
             <a
               href="tel:0783014969"
