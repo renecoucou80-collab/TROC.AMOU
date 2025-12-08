@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag, List, Lightbulb, Mail } from 'lucide-react';
+import { Heart, ShoppingBag, List, Lightbulb, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Home = () => {
