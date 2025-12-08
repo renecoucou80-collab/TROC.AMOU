@@ -78,39 +78,79 @@ const Home = () => {
             et découvrez des astuces pratiques pour vos projets du quotidien.
           </p>
           
-          <p style={{
-            fontSize: '1.1rem',
-            color: '#ffffff',
-            fontWeight: '600',
-            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8)',
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '0.5rem',
+            gap: '1rem',
             flexWrap: 'wrap'
           }}>
-            <span>Un problème ? Email :</span>
-            <a
-              href="mailto:rs2409@laposte.net?subject=Demande d'information"
-              data-testid="contact-email"
-              style={{
+            <p style={{
+              fontSize: '1.1rem',
+              color: '#ffffff',
+              fontWeight: '600',
+              textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              margin: 0
+            }}>
+              <span>Un problème ? Email :</span>
+              <a
+                href="mailto:renecoucou80@gmail.com?subject=Demande d'information"
+                data-testid="contact-email"
+                style={{
+                  color: '#ffd9c8',
+                  textDecoration: 'underline',
+                  fontWeight: '700',
+                  textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9)'
+                }}
+              >
+                renecoucou80@gmail.com
+              </a>
+              <span style={{ margin: '0 0.25rem' }}>|</span>
+              <span>Tél :</span>
+              <span style={{
                 color: '#ffd9c8',
-                textDecoration: 'underline',
-                fontWeight: '700',
-                textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9)'
+                fontWeight: '700'
+              }}>
+                07 83 01 49 69
+              </span>
+            </p>
+            
+            <button
+              onClick={copyEmail}
+              data-testid="copy-email-button"
+              style={{
+                background: '#fff',
+                color: '#d97757',
+                padding: '0.6rem 1.2rem',
+                borderRadius: '10px',
+                fontSize: '0.95rem',
+                fontWeight: '600',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                border: '2px solid #d97757',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 2px 10px rgba(217, 119, 87, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#d97757';
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = '#d97757';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              rs2409@laposte.net
-            </a>
-            <span style={{ margin: '0 0.5rem' }}>|</span>
-            <span>Tél :</span>
-            <span style={{
-              color: '#ffd9c8',
-              fontWeight: '700'
-            }}>
-              07 83 01 49 69
-            </span>
-          </p>
+              <Copy size={16} />
+              Copier l'email
+            </button>
+          </div>
         </div>
       </section>
       
