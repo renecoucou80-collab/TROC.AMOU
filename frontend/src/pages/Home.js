@@ -76,36 +76,78 @@ const Home = () => {
             et découvrez des astuces pratiques pour vos projets du quotidien.
           </p>
           
-          <Button
-            onClick={handleContact}
-            data-testid="contact-button"
-            style={{
-              background: '#d97757',
-              color: '#fff',
-              padding: '0.8rem 2rem',
-              borderRadius: '12px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 15px rgba(217, 119, 87, 0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(217, 119, 87, 0.3)';
-            }}
-          >
-            <Mail size={20} />
-            Un problème ? Contactez-nous
-          </Button>
+          <div style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
+          }}>
+            <Button
+              onClick={handleContact}
+              data-testid="contact-button"
+              style={{
+                background: '#d97757',
+                color: '#fff',
+                padding: '0.8rem 2rem',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(217, 119, 87, 0.3)';
+              }}
+            >
+              <Mail size={20} />
+              Un problème ? Contactez-moi
+            </Button>
+            
+            <a
+              href="tel:0783014969"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.8rem 2rem',
+                background: '#fff',
+                color: '#d97757',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                textDecoration: 'none',
+                border: '2px solid #d97757',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.3)';
+                e.currentTarget.style.background = '#d97757';
+                e.currentTarget.style.color = '#fff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(217, 119, 87, 0.2)';
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = '#d97757';
+              }}
+            >
+              <Phone size={20} />
+              07 83 01 49 69
+            </a>
+          </div>
         </div>
       </section>
       
