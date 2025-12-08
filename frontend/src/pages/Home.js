@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag, List, Lightbulb, Mail, Phone } from 'lucide-react';
+import { Heart, ShoppingBag, List, Lightbulb, Mail, Phone, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 const Home = () => {
+  const copyEmail = () => {
+    navigator.clipboard.writeText('renecoucou80@gmail.com');
+    toast.success('Email copié dans le presse-papier !');
+  };
+  
   return (
     <div style={{ 
       minHeight: 'calc(100vh - 80px)',
