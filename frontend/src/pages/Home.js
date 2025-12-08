@@ -80,7 +80,7 @@ const Home = () => {
             justifyContent: 'center'
           }}>
             <a
-              href="mailto:rs2409@laposte.net?subject=Problème avec le site Partage Solidaire"
+              href="mailto:rs2409@laposte.net?subject=Demande d'information"
               data-testid="contact-button"
               style={{
                 background: '#d97757',
