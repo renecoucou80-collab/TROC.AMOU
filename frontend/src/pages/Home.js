@@ -111,8 +111,7 @@ const Home = () => {
               Un problème ? Contactez-moi
             </a>
             
-            <a
-              href="tel:0783014969"
+            <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -123,27 +122,13 @@ const Home = () => {
                 borderRadius: '12px',
                 fontSize: '1rem',
                 fontWeight: '600',
-                textDecoration: 'none',
                 border: '2px solid #d97757',
-                transition: 'all 0.3s ease',
                 boxShadow: '0 4px 15px rgba(217, 119, 87, 0.2)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.3)';
-                e.currentTarget.style.background = '#d97757';
-                e.currentTarget.style.color = '#fff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(217, 119, 87, 0.2)';
-                e.currentTarget.style.background = '#fff';
-                e.currentTarget.style.color = '#d97757';
               }}
             >
               <Phone size={20} />
               07 83 01 49 69
-            </a>
+            </div>
           </div>
         </div>
       </section>
