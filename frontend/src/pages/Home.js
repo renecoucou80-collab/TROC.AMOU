@@ -5,9 +5,20 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 const Home = () => {
-  const copyEmail = () => {
-    navigator.clipboard.writeText('renecoucou80@gmail.com');
-    toast.success('Email copié dans le presse-papier !');
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('renecoucou80@gmail.com');
+      toast.success('Email copié dans le presse-papier !');
+    } catch (err) {
+      // Fallback si clipboard API ne fonctionne pas
+      const textArea = document.createElement('textarea');
+      textArea.value = 'renecoucou80@gmail.com';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      toast.success('Email copié !');
+    }
   };
   
   return (
