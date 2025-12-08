@@ -96,6 +96,14 @@ const Home = () => {
             >
               rs2409@laposte.net
             </a>
+            <span style={{ margin: '0 0.5rem' }}>|</span>
+            <span>Tél :</span>
+            <span style={{
+              color: '#ffd9c8',
+              fontWeight: '700'
+            }}>
+              07 83 01 49 69
+            </span>
           </p>
         </div>
       </section>
