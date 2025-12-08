@@ -72,64 +72,31 @@ const Home = () => {
             et découvrez des astuces pratiques pour vos projets du quotidien.
           </p>
           
-          <div style={{
+          <p style={{
+            fontSize: '1.1rem',
+            color: '#ffffff',
+            fontWeight: '600',
+            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8)',
             display: 'flex',
-            gap: '1rem',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            gap: '0.5rem',
+            flexWrap: 'wrap'
           }}>
+            <span>Un problème ? Email :</span>
             <a
               href="mailto:rs2409@laposte.net?subject=Demande d'information"
-              data-testid="contact-button"
+              data-testid="contact-email"
               style={{
-                background: '#d97757',
-                color: '#fff',
-                padding: '0.8rem 2rem',
-                borderRadius: '12px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.3)',
-                textDecoration: 'none'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(217, 119, 87, 0.3)';
+                color: '#ffd9c8',
+                textDecoration: 'underline',
+                fontWeight: '700',
+                textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9)'
               }}
             >
-              <Mail size={20} />
-              Un problème ? Contactez-moi
+              rs2409@laposte.net
             </a>
-            
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.8rem 2rem',
-                background: '#fff',
-                color: '#d97757',
-                borderRadius: '12px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                border: '2px solid #d97757',
-                boxShadow: '0 4px 15px rgba(217, 119, 87, 0.2)'
-              }}
-            >
-              <Phone size={20} />
-              07 83 01 49 69
-            </div>
-          </div>
+          </p>
         </div>
       </section>
       
