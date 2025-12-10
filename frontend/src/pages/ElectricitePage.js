@@ -1,0 +1,455 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'sonner';
+import { Zap, ArrowLeft, Plus, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const ElectricitePage = () => {
+  const navigate = useNavigate();
+  const [tips, setTips] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState({ open: false, id: '' });
+  
+  useEffect(() => {
+    fetchTips();
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
+  }, []);
+  
+  const fetchTips = async () => {
+    try {
+      const response = await axios.get(`${API}/tips`);
+      const electricityTips = response.data.filter(tip => tip.category === 'Électricité');
+      setTips(electricityTips);
+    } catch (error) {
+      console.error(error);
+      toast.error('Erreur lors du chargement des astuces');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!title || !content) {
+      toast.error('Veuillez remplir tous les champs');
+      return;
+    }
+    
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      toast.error('Vous devez être connecté en tant qu\'administrateur');
+      return;
+    }
+    
+    setSubmitting(true);
+    
+    try {
+      await axios.post(`${API}/tips`, {
+        title,
+        content,
+        category: 'Électricité'
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      toast.success('Astuce ajoutée avec succès !');
+      setTitle('');
+      setContent('');
+      setDialogOpen(false);
+      fetchTips();
+    } catch (error) {
+      console.error(error);
+      toast.error('Erreur lors de l\'ajout de l\'astuce');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+  
+  const handleDeleteTip = async () => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      toast.error('Vous devez être connecté en tant qu\'administrateur');
+      return;
+    }
+    
+    try {
+      await axios.delete(`${API}/tips/${deleteDialog.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      toast.success('Astuce supprimée avec succès');
+      setDeleteDialog({ open: false, id: '' });
+      fetchTips();
+    } catch (error) {
+      console.error(error);
+      toast.error('Erreur lors de la suppression');
+    }
+  };
+  
+  if (loading) {
+    return (
+      <div style={{
+        minHeight: 'calc(100vh - 80px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <p style={{ fontSize: '1.2rem', color: '#5a5550' }}>Chargement...</p>
+      </div>
+    );
+  }
+  
+  return (
+    <div style={{
+      minHeight: 'calc(100vh - 80px)',
+      padding: '3rem 2rem',
+      background: 'linear-gradient(135deg, #fff9c4 0%, #fff59d 100%)'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '2rem'
+        }}>
+          <Button
+            onClick={() => navigate('/tips')}
+            data-testid="back-to-tips"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.8rem 1.5rem',
+              background: '#fff',
+              color: '#2c2825',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '1rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateX(-4px)';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateX(0)';
+              e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }}
+          >
+            <ArrowLeft size={20} />
+            Retour aux astuces
+          </Button>
+          
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                data-testid="add-tip-button"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.8rem 1.5rem',
+                  background: '#fbc02d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 10px rgba(251, 192, 45, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f9a825';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(251, 192, 45, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#fbc02d';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 10px rgba(251, 192, 45, 0.3)';
+                }}
+              >
+                <Plus size={20} />
+                Ajouter une astuce
+              </Button>
+            </DialogTrigger>
+            <DialogContent style={{ maxWidth: '600px' }}>
+              <DialogHeader>
+                <DialogTitle>Ajouter une astuce Électricité</DialogTitle>
+                <DialogDescription>
+                  Partagez vos conseils et astuces en électricité
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} style={{ marginTop: '1.5rem' }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Label htmlFor="title" style={{ marginBottom: '0.5rem', display: 'block' }}>
+                    Titre *
+                  </Label>
+                  <Input
+                    id="title"
+                    data-testid="tip-title-input"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Ex: Comment remplacer une prise électrique"
+                    required
+                  />
+                </div>
+                
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Label htmlFor="content" style={{ marginBottom: '0.5rem', display: 'block' }}>
+                    Contenu *
+                  </Label>
+                  <Textarea
+                    id="content"
+                    data-testid="tip-content-input"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Décrivez votre astuce en détail..."
+                    required
+                    rows={6}
+                  />
+                </div>
+                
+                <Button
+                  type="submit"
+                  data-testid="submit-tip-button"
+                  disabled={submitting}
+                  style={{
+                    width: '100%',
+                    padding: '0.8rem',
+                    background: '#fbc02d',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    cursor: submitting ? 'not-allowed' : 'pointer',
+                    opacity: submitting ? 0.7 : 1
+                  }}
+                >
+                  {submitting ? 'Ajout en cours...' : 'Ajouter l\'astuce'}
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
+        
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '3rem'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(251, 192, 45, 0.2)',
+            padding: '2rem',
+            borderRadius: '50%',
+            marginBottom: '1.5rem'
+          }}>
+            <Zap size={60} stroke="#fbc02d" strokeWidth={1.5} />
+          </div>
+          
+          <h1 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            marginBottom: '1rem',
+            color: '#2c2825'
+          }} data-testid="electricite-title">
+            Astuces Électricité
+          </h1>
+          
+          <p style={{
+            fontSize: '1.1rem',
+            color: '#5a5550',
+            lineHeight: '1.7'
+          }}>
+            Conseils et astuces pour vos travaux électriques
+          </p>
+        </div>
+        
+        {tips.length === 0 ? (
+          <p style={{
+            textAlign: 'center',
+            color: '#5a5550',
+            fontSize: '1.1rem',
+            padding: '3rem'
+          }}>Aucune astuce d'électricité pour le moment</p>
+        ) : (
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '2rem'
+          }}>
+            {tips.map((tip) => (
+              <div
+                key={tip.id}
+                data-testid={`tip-${tip.id}`}
+                style={{
+                  background: '#fff',
+                  borderRadius: '20px',
+                  padding: '2rem',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  transition: 'all 0.3s ease',
+                  borderLeft: '6px solid #fbc02d',
+                  position: 'relative'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                }}
+              >
+                {isAdmin && (
+                  <button
+                    onClick={() => setDeleteDialog({ open: true, id: tip.id })}
+                    data-testid={`delete-tip-${tip.id}`}
+                    style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      background: '#ef5350',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.5rem',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(239, 83, 80, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#e53935';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#ef5350';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                )}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  marginBottom: '1rem'
+                }}>
+                  <div style={{
+                    background: 'rgba(251, 192, 45, 0.2)',
+                    padding: '0.8rem',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Zap size={28} stroke="#fbc02d" strokeWidth={2} />
+                  </div>
+                  
+                  <div>
+                    <span style={{
+                      display: 'inline-block',
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '8px',
+                      background: 'rgba(251, 192, 45, 0.2)',
+                      color: '#fbc02d',
+                      fontSize: '0.85rem',
+                      fontWeight: '600'
+                    }}>
+                      Électricité
+                    </span>
+                  </div>
+                </div>
+                
+                <h3 style={{
+                  fontSize: '1.4rem',
+                  fontWeight: '700',
+                  marginBottom: '1rem',
+                  color: '#2c2825'
+                }}>
+                  {tip.title}
+                </h3>
+                
+                <p style={{
+                  color: '#5a5550',
+                  lineHeight: '1.7',
+                  fontSize: '1rem',
+                  whiteSpace: 'pre-wrap'
+                }}>
+                  {tip.content}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <AlertDialog open={deleteDialog.open} onOpenChange={(open) => setDeleteDialog({ ...deleteDialog, open })}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirmer la suppression</AlertDialogTitle>
+            <AlertDialogDescription>
+              Êtes-vous sûr de vouloir supprimer cette astuce ? Cette action est irréversible.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDeleteTip} data-testid="confirm-delete-tip">
+              Supprimer
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
+  );
+};
+
+export default ElectricitePage;
