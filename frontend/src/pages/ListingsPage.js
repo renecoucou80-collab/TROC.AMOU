@@ -12,7 +12,6 @@ const ListingsPage = () => {
   const [donations, setDonations] = useState([]);
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [deleteDialog, setDeleteDialog] = useState({ open: false, type: '', id: '' });
   
   useEffect(() => {
     fetchListings();
