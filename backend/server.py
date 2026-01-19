@@ -132,12 +132,17 @@ async def create_donation(phone: str = Form(...), postal_code: str = Form(...), 
     if files:
         for file in files:
             if file.filename:
-                file_ext = Path(file.filename).suffix
-                file_name = f"{uuid.uuid4()}{file_ext}"
-                file_path = UPLOADS_DIR / file_name
-                with open(file_path, "wb") as buffer:
-                    shutil.copyfileobj(file.file, buffer)
-                photo_paths.append(f"/api/uploads/{file_name}")
+                # Upload to Cloudinary
+                try:
+                    upload_result = cloudinary.uploader.upload(
+                        file.file,
+                        folder="partage-solidaire/donations",
+                        resource_type="auto"
+                    )
+                    photo_paths.append(upload_result['secure_url'])
+                except Exception as e:
+                    logger.error(f"Error uploading to Cloudinary: {e}")
+                    raise HTTPException(status_code=500, detail="Error uploading image")
     
     donation = Donation(phone=phone, postal_code=postal_code, photos=photo_paths)
     doc = donation.model_dump()
