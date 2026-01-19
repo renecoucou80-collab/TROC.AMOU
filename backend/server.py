@@ -207,7 +207,7 @@ async def get_sales():
     return sales
 
 @api_router.delete("/sales/{sale_id}")
-async def delete_sale(sale_id: str):
+async def delete_sale(sale_id: str, admin: str = Depends(get_current_admin)):
     result = await db.sales.delete_one({"id": sale_id})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Sale not found")
