@@ -34,20 +34,6 @@ const ListingsPage = () => {
     }
   };
   
-  const handleDelete = async () => {
-    try {
-      const endpoint = deleteDialog.type === 'donation' ? 'donations' : 'sales';
-      await axios.delete(`${API}/${endpoint}/${deleteDialog.id}`);
-      
-      toast.success('Supprimé avec succès');
-      setDeleteDialog({ open: false, type: '', id: '' });
-      fetchListings();
-    } catch (error) {
-      console.error(error);
-      toast.error('Erreur lors de la suppression');
-    }
-  };
-  
   if (loading) {
     return (
       <div style={{
