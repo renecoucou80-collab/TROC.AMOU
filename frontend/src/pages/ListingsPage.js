@@ -125,7 +125,7 @@ const ListingsPage = () => {
             lineHeight: '1.6',
             fontWeight: '500'
           }}>
-            <strong>Important :</strong> Si votre objet a été donné ou vendu, merci de <strong>supprimer votre annonce</strong> en cliquant sur le bouton "Supprimer" pour maintenir la liste à jour.
+            <strong>Important :</strong> Si votre objet a été donné ou vendu, merci de nous <strong>contacter</strong> par <strong>email (renecoucou80@gmail.com)</strong> ou <strong>téléphone (07 83 01 49 69)</strong> pour que nous supprimions votre annonce et maintenions la liste à jour.
           </p>
         </div>
         
