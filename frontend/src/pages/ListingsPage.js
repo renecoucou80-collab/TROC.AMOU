@@ -173,7 +173,7 @@ const ListingsPage = () => {
                           }}
                         >
                           <img
-                            src={`${BACKEND_URL}${photo}`}
+                            src={photo}
                             alt={`Don photo ${idx + 1}`}
                             style={{
                               width: '100%',
