@@ -145,7 +145,7 @@ const SaleDetail = () => {
                   }}
                 >
                   <img
-                    src={`${BACKEND_URL}${photo}`}
+                    src={photo}
                     alt={`Vente photo ${idx + 1}`}
                     style={{
                       position: 'absolute',
