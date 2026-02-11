@@ -29,7 +29,7 @@ db = client[os.environ['DB_NAME']]
 # Security
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
-SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'your-secret-key-change-in-production')
+SECRET_KEY = "partage-solidaire-secret-key-2024-production"
 ALGORITHM = "HS256"
 
 # Cloudinary configuration
