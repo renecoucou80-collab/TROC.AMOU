@@ -35,7 +35,7 @@ const AdminLogin = () => {
       localStorage.setItem('adminToken', response.data.access_token);
       toast.success('Connexion réussie');
       setIsLoggedIn(true);
-      navigate('/listings');
+      navigate('/admin/panel');
     } catch (error) {
       console.error(error);
       toast.error('Identifiants incorrects');
