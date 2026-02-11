@@ -145,7 +145,7 @@ const DonationDetail = () => {
                   }}
                 >
                   <img
-                    src={`${BACKEND_URL}${photo}`}
+                    src={photo}
                     alt={`Don photo ${idx + 1}`}
                     style={{
                       position: 'absolute',
