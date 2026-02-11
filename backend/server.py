@@ -114,8 +114,8 @@ async def get_current_admin(credentials: HTTPAuthorizationCredentials = Depends(
 @api_router.post("/admin/login", response_model=Token)
 async def admin_login(credentials: AdminLogin):
     # Simple admin credentials (in production, store hashed password in DB)
-    ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
-    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'admin123')
+    ADMIN_USERNAME = "admin"
+    ADMIN_PASSWORD = "PartageSolidaire2024!"
     
     if credentials.username != ADMIN_USERNAME or credentials.password != ADMIN_PASSWORD:
         raise HTTPException(status_code=401, detail="Incorrect username or password")
