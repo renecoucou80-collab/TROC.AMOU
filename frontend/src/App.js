@@ -32,7 +32,8 @@ function App() {
           <Route path="/tips/electricite" element={<ElectricitePage />} />
           <Route path="/tips/maison" element={<MaisonPage />} />
           <Route path="/tips/autre" element={<AutrePage />} />
-          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/panel" element={<AdminPanel />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
