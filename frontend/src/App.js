@@ -9,6 +9,7 @@ import DonationDetail from './pages/DonationDetail';
 import SaleDetail from './pages/SaleDetail';
 import TipsPage from './pages/TipsPage';
 import AdminLogin from './pages/AdminLogin';
+import AdminPanel from './pages/AdminPanel';
 import ElectricitePage from './pages/ElectricitePage';
 import MaisonPage from './pages/MaisonPage';
 import AutrePage from './pages/AutrePage';
