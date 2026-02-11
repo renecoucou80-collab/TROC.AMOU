@@ -49,7 +49,17 @@ const AdminPanel = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
+      
+      if (!token) {
+        toast.error('Vous devez être connecté pour supprimer');
+        navigate('/admin/login');
+        return;
+      }
+      
       const endpoint = type === 'donation' ? 'donations' : type === 'sale' ? 'sales' : 'tips';
+      
+      console.log('Tentative de suppression:', { type, id, endpoint, API });
+      console.log('Token:', token ? 'présent' : 'absent');
       
       await axios.delete(`${API}/${endpoint}/${id}`, {
         headers: {
@@ -60,8 +70,10 @@ const AdminPanel = () => {
       toast.success('Annonce supprimée avec succès');
       fetchAllData();
     } catch (error) {
-      console.error(error);
-      toast.error('Erreur lors de la suppression');
+      console.error('Erreur complète:', error);
+      console.error('Détails erreur:', error.response?.data);
+      console.error('Status:', error.response?.status);
+      toast.error(`Erreur lors de la suppression: ${error.response?.data?.detail || error.message}`);
     }
   };
 
