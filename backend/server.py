@@ -34,9 +34,9 @@ ALGORITHM = "HS256"
 
 # Cloudinary configuration
 cloudinary.config(
-    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.environ.get('CLOUDINARY_API_KEY'),
-    api_secret=os.environ.get('CLOUDINARY_API_SECRET')
+    cloud_name="dlxfxswhy",
+    api_key="948525558273959",
+    api_secret="Zm3lGmRnkf0txxW6x8wwyVfBNpI"
 )
 
 # Create uploads directory (kept for backward compatibility but not used)
